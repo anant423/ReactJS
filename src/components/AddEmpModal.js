@@ -7,7 +7,7 @@ import IconButton from "@material-ui/core/IconButton";
 export class AddEmpModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { deps: [], snackbaropen: false, snackbarmsg: "" };
+    this.state = { deps: [], desg: [], snackbaropen: false, snackbarmsg: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -16,6 +16,11 @@ export class AddEmpModal extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({ deps: data });
+      });
+    fetch("http://localhost:49902/api/designation")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ desg: data });
       });
   }
 
@@ -36,8 +41,23 @@ export class AddEmpModal extends Component {
         EmployeeID: null,
         EmployeeName: event.target.EmployeeName.value,
         Department: event.target.Department.value,
+        Designation: event.target.Designation.value,
+        PANNumber: event.target.PANNumber.value,
+        AdharNumber: event.target.AdharNumber.value,
         MailID: event.target.MailID.value,
-        DOJ: event.target.DOJ.value
+        DOJ: event.target.DOJ.value,
+        Address: event.target.Address.value,
+        Salary: event.target.Salary.value,
+        Gender: event.target.Gender.value,
+        MobileNumber: event.target.MobileNumber.value,
+        BankName: event.target.BankName.value,
+        IFSCCode: event.target.IFSCCode.value,
+        BranchName: event.target.BranchName.value,
+        BranchAddress: event.target.BranchAddress.value,
+        AccountNumber: event.target.AccountNumber.value,
+        AccountType: event.target.AccountType.value,
+        BaseSalary: event.target.BaseSalary.value,
+        NetBankingID: event.target.NetBankingID.value
       })
     })
       .then(res => res.json())
@@ -111,6 +131,38 @@ export class AddEmpModal extends Component {
                     </Form.Control>
                   </Form.Group>
 
+                  <Form.Group controlId="Designation">
+                    <Form.Label>Designation</Form.Label>
+
+                    <Form.Control as="select">
+                      {this.state.desg.map(des => (
+                        <option key={des.DesignationID}>
+                          {des.DesignationName}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </Form.Group>
+
+                  <Form.Group controlId="PANNumber">
+                    <Form.Label>PANNumber</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="PANNumber"
+                      required
+                      placeholder="PANNumber"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="AdharNumber">
+                    <Form.Label>AdharNumber</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="AdharNumber"
+                      required
+                      placeholder="AdharNumber"
+                    />
+                  </Form.Group>
+
                   <Form.Group controlId="MailID">
                     <Form.Label>MailID</Form.Label>
                     <Form.Control
@@ -128,6 +180,126 @@ export class AddEmpModal extends Component {
                       name="DOJ"
                       required
                       placeholder="DOJ"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="Address">
+                    <Form.Label>Address</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Address"
+                      required
+                      placeholder="Address"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="Salary">
+                    <Form.Label>Salary</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Salary"
+                      required
+                      placeholder="Salary"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="Gender">
+                    <Form.Label>Gender</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="Gender"
+                      required
+                      placeholder="Gender"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="MobileNumber">
+                    <Form.Label>MobileNumber</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="MobileNumber"
+                      required
+                      placeholder="MobileNumber"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="BankName">
+                    <Form.Label>BankName</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="BankName"
+                      required
+                      placeholder="BankName"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="IFSCCode">
+                    <Form.Label>IFSCCode</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="IFSCCode"
+                      required
+                      placeholder="IFSCCode"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="BranchName">
+                    <Form.Label>BranchName</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="BranchName"
+                      required
+                      placeholder="BranchName"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="BranchAddress">
+                    <Form.Label>BranchAddress</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="BranchAddress"
+                      required
+                      placeholder="BranchAddress"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="AccountNumber">
+                    <Form.Label>AccountNumber</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="AccountNumber"
+                      required
+                      placeholder="AccountNumber"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="AccountType">
+                    <Form.Label>AccountType</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="AccountType"
+                      required
+                      placeholder="AccountType"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="BaseSalary">
+                    <Form.Label>BaseSalary</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="BaseSalary"
+                      required
+                      placeholder="BaseSalary"
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="NetBankingID">
+                    <Form.Label>NetBankingID</Form.Label>
+                    <Form.Control
+                      type="text"
+                      name="NetBankingID"
+                      required
+                      placeholder="NetBankingID"
                     />
                   </Form.Group>
 
