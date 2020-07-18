@@ -36,7 +36,7 @@ export class AddEmpModal extends Component {
         EmployeeID: null,
         EmployeeName: event.target.EmployeeName.value,
         Department: event.target.Department.value,
-
+            
         MailID: event.target.MailID.value,
         DOJ: event.target.DOJ.value
       })
