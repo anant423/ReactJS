@@ -11,6 +11,14 @@ export class EditDesModal extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    fetch("http://localhost:49902/api/department")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ deps: data });
+      });
+  }
+
   snackbarClose = event => {
     this.setState({ snackbaropen: false });
   };
@@ -26,7 +34,7 @@ export class EditDesModal extends Component {
       body: JSON.stringify({
         DesignationID: event.target.DesignationID.value,
         DesignationName: event.target.DesignationName.value,
-        DepartmentName: event.target.DepartmentName.value
+        Department: event.target.Department.value
       })
     })
       .then(res => res.json())
@@ -99,6 +107,18 @@ export class EditDesModal extends Component {
                       defaultValue={this.props.depname}
                       placeholder="DesignationName"
                     />
+                  </Form.Group>
+
+                  <Form.Group controlId="Department">
+                    <Form.Label>Department</Form.Label>
+
+                    <Form.Control as="select" defaultValue={this.props.depmt}>
+                      {this.state.deps.map(dep => (
+                        <option key={dep.DepartmentID}>
+                          {dep.DepartmentName}
+                        </option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
 
                   <Form.Group>
