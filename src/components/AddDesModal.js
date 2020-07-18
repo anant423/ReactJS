@@ -34,8 +34,8 @@ export class AddDesModal extends Component {
       },
       body: JSON.stringify({
         DesignationID: null,
-        DesignationName: event.target.DesignationName.value,
-        DepartmentName: event.target.DepartmentName.value
+        DesignationName: event.target.DesignationtName.value,
+        Department: event.target.Department.value
       })
     })
       .then(res => res.json())
@@ -91,7 +91,7 @@ export class AddDesModal extends Component {
                     <Form.Label>DesignationName</Form.Label>
                     <Form.Control
                       type="text"
-                      name="DesignationName"
+                      name="DesignationtName"
                       required
                       placeholder="DesignationName"
                     />
